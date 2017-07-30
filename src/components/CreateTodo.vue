@@ -18,7 +18,7 @@
                         <button class='ui basic blue button' @click="sendForm">
                         Create
                         </button>
-                        <button class='ui basic red button'>
+                        <button class='ui basic red button' @click="closeForm">
                         Cance
                         </button>
                     </div>
@@ -56,6 +56,9 @@
                     this.isCreating = false;
                 }
             },
+            closeForm(){
+                this.isCreating = false;
+            }
         }
     }
 </script>

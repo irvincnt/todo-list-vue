@@ -34,10 +34,10 @@
                 </div>
             </div>
         </div>
-        <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" >
+        <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" @click="stateTodo(todo)">
             Completed
         </div>
-        <div class='ui bottom attached red basic button' v-show="!isEditing && !todo.done">
+        <div class='ui bottom attached red basic button' v-show="!isEditing && !todo.done" @click="stateTodo(todo)">
             Pending
         </div>
     </div>
@@ -62,6 +62,9 @@
             },
             deleteTodo(todo) {
             this.$emit('delete', todo);
+            },
+            stateTodo(todo){
+                this.$emit('state', todo);
             }
         },
     };
