@@ -1,16 +1,40 @@
-<template> 
-	<div>
-		<ul>
-			<li> Todo A </li>
-			<li> Todo B </li>
-			<li> Todo C </li>
-		</ul>
-   </div>
+<template>
+  <div>
+    <p class="tasks">Completed Tasks: {{todos.filter(t => {return t.done === true}).length}}</p>
+    <p class="tasks">Pending Tasks: {{todos.filter(t => {return t.done === false}).length}}</p>
+    <div class='ui centered card' v-for="todo in todos">
+      <div class='content'>
+        <div class='header'>
+          {{ todo.title }}
+        </div>
+        <div class='meta'>
+          {{ todo.project }}
+        </div>
+        <div class='extra content'>
+          <span class='right floated edit icon'>
+            <i class='edit icon'></i>
+          </span>
+        </div>
+      </div>
+      <div class='ui bottom attached green basic button' v-show="todo.done">
+        Completed
+      </div>
+      <div class='ui bottom attached red basic button' v-show="!todo.done">
+        Complete
+      </div>
+	</div>
+  </div>
 </template>
+
 
 <script type = "text/javascript">
 export default {
-
+	props: ['todos'],
 };
-	
 </script>
+
+<style scoped>
+p.tasks {
+	text-align: center;
+ }
+</style>
